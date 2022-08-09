@@ -1,0 +1,17 @@
+{
+    "Name": "Snnag.ForgeServer",
+    "Description": "Server tools",
+    "LoadPriority": 2,
+    "RequiredOnClient": false,
+    "Version": "1.0.0",
+
+    "Scripts": [
+        {
+            "Path": "forge.nut",
+            "RunOn": "SERVER",
+            "ServerCallback": {
+                "Before": "InitForgeServer"
+            }
+        }
+    ]
+}
