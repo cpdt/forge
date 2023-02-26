@@ -1,9 +1,11 @@
 use serde::Deserialize;
 use std::collections::HashMap;
+use std::net::SocketAddr;
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
 pub struct Config {
+    pub listen: SocketAddr,
     pub discord_token: String,
     pub discord_application: u64,
 
@@ -13,10 +15,8 @@ pub struct Config {
     pub modes: HashMap<String, String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
 pub struct ServerConfig {
-    pub address: String,
-    pub password: String,
     pub channel: u64,
 }

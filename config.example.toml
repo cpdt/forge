@@ -1,14 +1,8 @@
+listen = "0.0.0.0:3700"
 discord-token = ""
 discord-application = 0
 
-[servers.test1]
-address = "localhost:37015"
-password = "myrconpassword"
-channel = 1000000000000000000
-
-[servers.test2]
-address = "localhost:37016"
-password = "myrconpassword"
+[servers.test]
 channel = 1000000000000000000
 
 [maps]
@@ -79,3 +73,4 @@ sns = "Sticks and Stones"
 tffa = "Titan FFA"
 tt = "Titan Tag"
 sp_coop = "Campaign Coop"
+fw = "Frontier War"

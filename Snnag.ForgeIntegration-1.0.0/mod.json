@@ -1,5 +1,5 @@
 {
-    "Name": "Snnag.ForgeServer",
+    "Name": "Snnag.ForgeIntegration",
     "Description": "Server tools",
     "LoadPriority": 2,
     "RequiredOnClient": false,
@@ -10,7 +10,7 @@
             "Path": "forge.nut",
             "RunOn": "SERVER",
             "ServerCallback": {
-                "Before": "InitForgeServer"
+                "Before": "ForgeIntegration_Init"
             }
         }
     ]

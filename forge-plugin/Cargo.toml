@@ -1,0 +1,17 @@
+[package]
+name = "forge-plugin"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+bincode = "1.3"
+forge-shared = { path = "../forge-shared" }
+rrplug = { git = "https://github.com/cpdt/rrplug", branch = "remove-nightly-features" }
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.7"
+
+[build-dependencies]
+windres = "0.2"
