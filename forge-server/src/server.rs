@@ -74,7 +74,7 @@ impl Server {
                 }
             });
 
-            self.push_stream(stream_id, write_half, read);
+            self.push_stream(stream_id, write_half, read).await;
         }
     }
 
@@ -121,8 +121,8 @@ impl Server {
         }
     }
 
-    fn push_stream(&self, id: u64, write: OwnedWriteHalf, read: JoinHandle<()>) {
-        let mut streams = self.streams.blocking_lock();
+    async fn push_stream(&self, id: u64, write: OwnedWriteHalf, read: JoinHandle<()>) {
+        let mut streams = self.streams.lock().await;
         streams.push(Stream { id, write, read });
         info!("{} client(s) connected", streams.len());
     }
