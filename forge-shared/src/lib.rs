@@ -86,6 +86,10 @@ impl<T: DeserializeOwned, F: FnMut(T)> ReceiveBuffer<T, F> {
     pub fn read<R: std::io::Read>(&mut self, mut r: R) -> std::io::Result<()> {
         let mut read = self.start_read();
         let write_len = r.read(read.data())?;
+        if write_len == 0 {
+            return Err(std::io::ErrorKind::UnexpectedEof.into())
+        }
+
         read.finish(write_len);
         Ok(())
     }

@@ -140,6 +140,9 @@ async fn stream_read_loop(
     loop {
         let mut read = buffer.start_read();
         let write_len = read_half.read(read.data()).await?;
+        if write_len == 0 {
+            return Err(std::io::ErrorKind::UnexpectedEof.into())
+        }
         read.finish(write_len);
     }
 }

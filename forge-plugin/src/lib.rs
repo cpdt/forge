@@ -92,13 +92,14 @@ impl Plugin for ForgePlugin {
 
         loop {
             log::info!("Connecting to {}", config.remote);
-            let mut stream = match TcpStream::connect(config.remote) {
-                Ok(stream) => stream,
-                Err(err) => {
-                    log::error!("Failed to connect: {}", err);
-                    continue;
-                }
-            };
+            let mut stream =
+                match TcpStream::connect_timeout(&config.remote, Duration::from_secs(5)) {
+                    Ok(stream) => stream,
+                    Err(err) => {
+                        log::error!("Failed to connect: {}", err);
+                        continue;
+                    }
+                };
 
             std::thread::scope(|s| {
                 let has_socket_closed = Arc::new(AtomicBool::new(false));
